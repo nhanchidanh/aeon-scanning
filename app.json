@@ -19,10 +19,17 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.mkc_team.aeonscanning"
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6b12feeb-b356-4f4e-9edd-9f167eed4170"
+      }
+    },
+    "owner": "mkc_team"
   }
 }
