@@ -182,6 +182,8 @@ const ScanScreen = () => {
         blocks = initialBlocks;
       }
 
+      setImageUri(uri);
+
       const text = blocks?.blocks.map((block) => block.text).join("\n");
       let lines = text
         .split("\n")

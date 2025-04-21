@@ -33,6 +33,12 @@
     }
   },
   "submit": {
-    "production": {}
+    "production": {
+      "ios": {
+        "appleId": "kietnt@mekong-connector.com",
+        "ascAppId": "6744876682",
+        "appleTeamId": "3Z4U7TXJH5"
+      }
+    }
   }
 }

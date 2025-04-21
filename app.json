@@ -17,7 +17,8 @@
       "infoPlist": {
         "ITSAppUsesNonExemptEncryption": false,
         "NSCameraUsageDescription": "This app uses the camera to recognize product expiration dates."
-      }
+      },
+      "bundleIdentifier": "com.mkcteam.aeonscanning"
     },
     "android": {
       "adaptiveIcon": {
@@ -47,7 +48,10 @@
       "policy": "appVersion"
     },
     "updates": {
-      "url": "https://u.expo.dev/6b12feeb-b356-4f4e-9edd-9f167eed4170"
+      "url": "https://u.expo.dev/6b12feeb-b356-4f4e-9edd-9f167eed4170",
+      "enabled": true,
+      "checkAutomatically": "ON_LOAD",
+      "fallbackToCacheTimeout": 0
     }
   }
 }
