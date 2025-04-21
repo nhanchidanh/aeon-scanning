@@ -225,7 +225,7 @@ const ScanScreen = () => {
 
         // Nếu chỉ nhận diện ra 1 date, hỏi người dùng có muốn nhận diện tiếp không
         if (
-          response?.data?.full_date?.length > 1 &&
+          response?.data?.full_date?.length > 0 &&
           !response.data.shelf_life &&
           !prevDetectedDate
         ) {
