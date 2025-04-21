@@ -32,6 +32,7 @@ const ScanScreen = () => {
   const [imageUri, setImageUri] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
   const [lastDetectedDate, setLastDetectedDate] = useState<string | null>(null); // Lưu ngày đã nhận diện
+  const [angle, setAngle] = useState(0); // Lưu góc xoay của ảnh
 
   const showMfgDatePicker = () => {
     setMfgDatePickerVisible(true);
@@ -95,7 +96,6 @@ const ScanScreen = () => {
         {
           compress: 0.9,
           format: ImageManipulator.SaveFormat.JPEG,
-          base64: true,
         }
       );
       return result;
@@ -171,6 +171,9 @@ const ScanScreen = () => {
       const angle = getFirstTextAngle(initialBlocks?.blocks);
 
       let blocks;
+      console.log("Rotating image by angle:", Math.abs(angle));
+      setAngle(angle); // Lưu góc xoay vào state
+
       if (!isNaN(angle) && Math.abs(angle) > 5) {
         const rotated: any = await rotateImage(uri, angle);
         uri = rotated.uri;
@@ -221,7 +224,11 @@ const ScanScreen = () => {
         }
 
         // Nếu chỉ nhận diện ra 1 date, hỏi người dùng có muốn nhận diện tiếp không
-        if (response?.data?.full_date?.length === 1 && !prevDetectedDate) {
+        if (
+          response?.data?.full_date?.length > 1 &&
+          !response.data.shelf_life &&
+          !prevDetectedDate
+        ) {
           const firstDate = response.data.full_date[0];
           const detected =
             (firstDate.type_date || "") +
@@ -482,6 +489,59 @@ const ScanScreen = () => {
               onConfirm={handleExpDateConfirm}
               onCancel={hideExpDatePicker}
             />
+          </View>
+
+          {/* Angle Display */}
+          <View
+            style={{
+              backgroundColor: "#fff",
+              borderRadius: 12,
+              padding: 16,
+              shadowColor: "#000",
+              shadowOffset: { width: 0, height: 2 },
+              shadowOpacity: 0.1,
+              shadowRadius: 4,
+              elevation: 3,
+              marginBottom: 24,
+            }}
+          >
+            <Text
+              style={{
+                fontSize: 16,
+                fontWeight: "600",
+                marginBottom: 12,
+                color: "#333",
+              }}
+            >
+              Rotation Angle
+            </Text>
+            <View
+              style={{
+                flexDirection: "row",
+                alignItems: "center",
+                borderWidth: 1,
+                borderColor: "#e0e0e0",
+                borderRadius: 8,
+                padding: 12,
+                backgroundColor: "#F8F8F8",
+              }}
+            >
+              <MaterialIcons
+                name="rotate-right"
+                size={22}
+                color="#ff4081"
+                style={{ marginRight: 10 }}
+              />
+              <Text
+                style={{
+                  flex: 1,
+                  color: "#333",
+                  fontSize: 16,
+                }}
+              >
+                {angle ? `${angle.toFixed(2)}°` : "No rotation detected"}
+              </Text>
+            </View>
           </View>
 
           {/* Scan Button */}
