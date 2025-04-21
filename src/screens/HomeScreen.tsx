@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigation } from "@react-navigation/native";
 import Icon from "@expo/vector-icons/MaterialIcons";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { StatusBar } from "expo-status-bar";
 
 const HomeScreen = () => {
   const navigation = useNavigation<any>();
@@ -18,6 +19,8 @@ const HomeScreen = () => {
         backgroundColor: "#f5f5f5",
       }}
     >
+      <StatusBar></StatusBar>
+
       <View
         style={{
           backgroundColor: "#ff4081",

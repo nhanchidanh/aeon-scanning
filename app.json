@@ -13,7 +13,11 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": false
+      "supportsTablet": false,
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false,
+        "NSCameraUsageDescription": "This app uses the camera to recognize product expiration dates."
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -25,11 +29,25 @@
     "web": {
       "favicon": "./assets/favicon.png"
     },
+    "plugins": [
+      [
+        "expo-image-picker",
+        {
+          "cameraPermission": "This app uses the camera to recognize product expiration dates."
+        }
+      ]
+    ],
     "extra": {
       "eas": {
         "projectId": "6b12feeb-b356-4f4e-9edd-9f167eed4170"
       }
     },
-    "owner": "mkc_team"
+    "owner": "mkc_team",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://u.expo.dev/6b12feeb-b356-4f4e-9edd-9f167eed4170"
+    }
   }
 }
